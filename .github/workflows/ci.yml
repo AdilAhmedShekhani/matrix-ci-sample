@@ -48,7 +48,7 @@ jobs:
 
       - name: Upload test results artifact (always)
         if: ${{ always() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ matrix.node-version }}
           path: test-results/results-${{ matrix.node-version }}.json
@@ -68,7 +68,7 @@ jobs:
           node-version: 18
 
       - name: Download all test artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: test-results
 
@@ -76,7 +76,7 @@ jobs:
         run: node scripts/summarize.js
 
       - name: Upload summary artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results-summary
           path: test-results/summary.json
@@ -105,7 +105,7 @@ jobs:
         run: npm test -- --json --outputFile=test-results/results-nightly.json
 
       - name: Upload nightly test artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results-nightly
           path: test-results/results-nightly.json
@@ -134,7 +134,7 @@ jobs:
         run: npm run build
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-output
           path: dist/
@@ -147,7 +147,7 @@ jobs:
     environment: production   # protect this environment in repo settings to require manual approval
     steps:
       - name: Download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-output
           path: dist
