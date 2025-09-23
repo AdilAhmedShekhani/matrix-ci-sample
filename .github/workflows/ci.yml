@@ -16,8 +16,7 @@ on:
         description: 'Set to "true" to skip build during manual run'
         required: false
         default: 'false'
-  schedule:
-    - cron: '0 2 * * *' # nightly at 02:00 UTC
+  
 
 jobs:
 
